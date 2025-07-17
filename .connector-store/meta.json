@@ -22,6 +22,267 @@
             ],
             "operations": [
                 {
+                    "name": "publishMessage",
+                    "description": "Publish Message",
+                    "params": [
+                        {
+                            "name": "projectId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Google Cloud Project ID containing the topic"
+                        },
+                        {
+                            "name": "topicName",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the topic to publish the message to"
+                        },
+                        {
+                            "name": "data",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "The message payload to be published (will be base64 encoded automatically)"
+                        },
+                        {
+                            "name": "attributes",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Additional attributes for the message (JSON object format)"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "createTopic",
+                    "description": "Create Topic",
+                    "params": [
+                        {
+                            "name": "projectId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Google Cloud Project ID where the topic will be created"
+                        },
+                        {
+                            "name": "topicName",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the topic to be created"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "pullMessage",
+                    "description": "Pull Message",
+                    "params": [
+                        {
+                            "name": "projectId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Unique identifier of the project"
+                        },
+                        {
+                            "name": "subscriptionName",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the Subscription"
+                        },
+                        {
+                            "name": "maxMessages",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "The maximum number of messages returned for this request"
+                        },
+                        {
+                            "name": "returnImmediately",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Return the respond immediately or not"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
+                    "isHidden": false
+                },
+                {
+                    "name": "subscribeTopic",
+                    "description": "Create Topic Subscription",
+                    "params": [
+                        {
+                            "name": "projectId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Google Cloud Project ID where the subscription will be created"
+                        },
+                        {
+                            "name": "topicName",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the topic to subscribe to"
+                        },
+                        {
+                            "name": "subscriptionName",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the subscription to be created"
+                        },
+                        {
+                            "name": "ackDeadlineSeconds",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Maximum time after a subscriber receives a message before the subscriber must acknowledge the message (10-600 seconds)"
+                        },
+                        {
+                            "name": "pushEndpoint",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "URL for push delivery. If not specified, the subscription will use pull delivery"
+                        },
+                        {
+                            "name": "attributes",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "",
+                            "description": "Additional attributes for the subscription in JSON format (e.g., '{\"key\":\"value\"}')"
+                        },
+                        {
+                            "name": "responseVariable",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Name of the variable to which the output of the operation should be assigned"
+                        },
+                        {
+                            "name": "overwriteBody",
+                            "type": "checkbox",
+                            "required": false,
+                            "defaultValue": "false",
+                            "description": "Replace the Message Body in Message Context with the output of the operation (This will remove the payload from the above variable)."
+                        }
+                    ],
+                    "isHidden": false
+                }
+            ],
+            "connections": [
+                {
+                    "name": "GOOGLEPUBSUB",
+                    "description": "Google Pub/Sub Connection",
+                    "params": [
+                        {
+                            "name": "connectionName",
+                            "type": "string",
+                            "required": true,
+                            "defaultValue": "GOOGLEPUBSUB_CONNECTION_1",
+                            "description": "The name of the connection to Google Pub/Sub"
+                        },
+                        {
+                            "name": "clientId",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Client ID used to connect with Google Pub/Sub"
+                        },
+                        {
+                            "name": "clientSecret",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Client Secret to connect with Google Pub/Sub"
+                        },
+                        {
+                            "name": "refreshToken",
+                            "type": "stringOrExpression",
+                            "required": true,
+                            "defaultValue": "",
+                            "description": "Refresh Token used to connect with Google Pub/Sub"
+                        },
+                        {
+                            "name": "apiUrl",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "https://pubsub.googleapis.com",
+                            "description": "API URL used to connect with Google Pub/Sub"
+                        },
+                        {
+                            "name": "apiVersion",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "v1",
+                            "description": "API Version used to connect with Google Pub/Sub"
+                        },
+                        {
+                            "name": "tokenEndpoint",
+                            "type": "stringOrExpression",
+                            "required": false,
+                            "defaultValue": "https://oauth2.googleapis.com/token",
+                            "description": "Token URL used to connect with Google Pub/Sub"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "tagName": "v2.0.0",
+            "products": [
+                "MI 4.4.0"
+            ],
+            "operations": [
+                {
                     "name": "createTopic",
                     "description": "create a Topic.",
                     "isHidden": false
@@ -42,7 +303,9 @@
                     "isHidden": false
                 }
             ],
-            "connections": ["GOOGLEPUBSUB"],
+            "connections": [
+                "GOOGLEPUBSUB"
+            ],
             "isHidden": false
         },
         {
