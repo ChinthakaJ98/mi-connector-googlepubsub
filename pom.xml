@@ -21,7 +21,7 @@
     <groupId>org.wso2.integration.connector</groupId>
     <artifactId>mi-connector-googlepubsub</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.0.0</version>
     <name>WSO2 Carbon - Mediation Library Connector For googlePubSub</name>
     <url>http://wso2.org</url>
     <properties>
@@ -200,7 +200,7 @@
         <url>https://github.com/wso2-extensions/esb-connector-googlepubsub.git</url>
         <developerConnection>scm:git:https://github.com/wso2-extensions/esb-connector-googlepubsub
         </developerConnection>
-        <tag>HEAD</tag>
+        <tag>v2.0.0</tag>
     </scm>
     <build>
         <plugins>
